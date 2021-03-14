@@ -12,15 +12,9 @@ from flask_wtf import FlaskForm
 from wtforms import SubmitField, TextAreaField, SelectField
 
 
-styles = [
-    ['dep', 'Синтаксис'],
-    ['ent', 'Именованные сущности'],
-]
-
 
 class MyForm(FlaskForm):
     text = TextAreaField('Предложение', render_kw={'cols': '50'})
-    render_style = SelectField(u'Тип разбора', choices=styles, default='dep')
     submit = SubmitField('Разобрать')
 
 
@@ -32,7 +26,6 @@ def display():
         doc1 = nlp(form.text.data)
         sentence = displacy.render(
             doc1,
-            style=form.render_style.data or 'dep',
             page=False
         )
 
