@@ -5,7 +5,7 @@ from flask import Flask, render_template
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'kek'
-nlp = spacy.load("zh_core_web_trf")
+nlp = spacy.load("zh_core_web_sm")
 
 
 from flask_wtf import FlaskForm
